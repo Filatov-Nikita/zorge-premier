@@ -1,0 +1,220 @@
+>>>
+  h1
+    color #f6ac6d
+    font-weight 700
+    line-height 1.2
+    font-size rem(49px)
+    font-family 'Heading Pro Wide'
+    +below(1500px)
+      font-size rem(40px)
+    +below(1340px)
+      padding-left 60px
+      font-size rem(36px)
+
+  .body-desktop
+    overflow hidden
+    font-family 'TT Commons'
+    background-color #1f262e
+
+  .back
+    z-index 98
+    fixed left 35px bottom 55px
+    +below(1800px)
+      bottom 85px
+  .width-height-view
+    color #000
+    z-index 9999
+    line-height 1
+    background #fff
+    absolute left 0 top 0
+
+  .ps
+    height 100vh
+
+  .container
+    +above(1199px)
+      max-width 1300px
+    +below(1470px)
+      padding 0 80px
+    +below(1345px)
+      padding 0 140px
+
+  .top-right-panel
+    z-index 101
+    fixed top 25px right 80px
+    +below(1700px)
+      right 35px
+    &--absolute
+      position absolute
+    & > *
+      margin-left auto
+
+  .bottom-right-panel
+    z-index 103
+    fixed bottom 55px right 80px
+    +below(1800px)
+      bottom 85px
+    +below(1700px)
+      right 35px
+
+  .long-title
+    line-height 1.2
+    margin-bottom 1em
+    font-size rem(20px)
+    font-family 'Heading Pro Wide'
+
+  .link
+    z-index 1
+    display flex
+    cursor pointer
+    width fit-content
+    align-items center
+    position relative
+    &__svg
+      fill #f6ac6d
+      size 63px 18px
+      margin-right 25px
+    &__text
+      color #fff
+      font-weight 700
+      line-height 1.1
+      position relative
+      padding-bottom 5px
+      font-size rem(16px)
+      text-transform uppercase
+      letter-spacing rem(3.52px)
+      font-family 'Heading Pro Wide'
+      border-bottom 2px solid #f6ac6d
+      &:after
+        content ''
+        size 100% 0
+        background-color #f6ac6d
+        absolute left 0 bottom 0
+        transition height .15s ease-in-out
+    &:hover
+      text-decoration none
+    &:hover &__text:after
+      height 3px
+
+  .first-menu, .second-menu
+    user-select none
+    a
+      display block
+      color #f6ac6d
+      font-weight 700
+      line-height 1.1
+      width fit-content
+      position relative
+      padding-right 15px
+      font-size rem(40px)
+      text-transform uppercase
+      letter-spacing rem(8.8px)
+      font-family 'Heading Pro Wide'
+      +below(1300px)
+        font-size rem(30px)
+        letter-spacing rem(5px)
+      &:hover
+        text-decoration none
+      &:before
+        size 0 3px
+        content ''
+        background-color #f6ac6d
+        absolute left 0 bottom 0
+        transition width .15s ease-in-out
+      &:hover:before
+        width 100%
+    a + a
+      margin-top 2.5vh
+
+  .second-menu
+    a
+      color #fff
+      padding-right 5px
+      font-size rem(20px)
+      text-transform uppercase
+      letter-spacing rem(4.4px)
+      +below(1300px)
+        font-size rem(18px)
+        letter-spacing rem(3px)
+      &:before
+        height 2px
+        background-color #fff
+    a + a
+      margin-top 1.5vh
+  .hidden-menu
+    size 100%
+    z-index 101
+    fixed top 0 left 0
+    background-color #1f262e
+    &__wrapper
+      size 100%
+      display flex
+      flex-direction column
+      justify-content space-between
+      padding 9vh 0 calc(9vh + 50px)
+    .ellipses
+      size 100%
+      absolute left 0 top 0
+      animation .75s blurIn
+      @keyframes blurIn
+        0%, 20%
+          opacity 0
+          filter blur(30px)
+        50%
+          opacity .5
+          filter blur(1px)
+        100%
+          opacity 1
+          filter blur(0)
+    .ellipse
+      position absolute
+      stroke rgba(246, 172, 109, .2)
+    .ellipse-1
+      left -508px
+      bottom -508px
+      stroke-dashoffset 0
+      stroke-dasharray 1800
+      animation ellipse-1 10s ease-in infinite
+      @keyframes ellipse-1
+        0%
+          stroke-dashoffset 3191
+        100%
+          stroke-dashoffset 0
+    .ellipse-2
+      top 0
+      height 100%
+      stroke-dashoffset 0
+      stroke-dasharray 1100
+      left calc(50% - 600px)
+      animation ellipse-2 8s ease-in infinite
+      @keyframes ellipse-2
+        0%
+          stroke-dashoffset 2300
+        100%
+          stroke-dashoffset 0
+    .ellipse-3
+      right 10%
+      top -390px
+      stroke-dashoffset 0
+      stroke-dasharray 900
+      background-color #1f262e
+      animation ellipse-3 6s ease-in infinite
+      @keyframes ellipse-3
+        0%
+          stroke-dashoffset 1672
+        100%
+          stroke-dashoffset 0
+    .ellipse-4
+      top -285px
+      right -230px
+      stroke-dashoffset 0
+      stroke-dasharray 1100
+      animation ellipse-4 6s ease-in infinite
+      @keyframes ellipse-4
+        0%
+          stroke-dashoffset 2074
+        100%
+          stroke-dashoffset 0
+
+  .fancybox-bg
+    background #1f252f

@@ -1,0 +1,91 @@
+@font-face {
+  font-family: Heading Pro Wide;
+  src: local("HeadingProWide-Light"), url('../css/fonts/HeadingProWide-Light.woff') format("woff");
+  font-weight: 300;
+  font-style: normal
+}
+@font-face {
+  font-family: Heading Pro Wide;
+  src: local("Heading Pro Wide Bold"), local("HeadingProWide-Bold"), url('../css/fonts/HeadingProWide-Bold.woff') format("woff");
+  font-weight: 700;
+  font-style: normal
+}
+.clear {
+  clear: both;
+}
+body, .bottom__table, .apartment {
+  font-size: 16px;
+  font-family: 'Heading Pro Wide', sans-serif;
+}
+.header {
+  margin-bottom: 40px;
+}
+.header__logo {
+  width: 300px;
+  float: left;
+}
+.header__right {
+  text-align: right;
+}
+.header__domain {
+  font-weight: 100;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+.header__phone {
+  float: right;
+  font-size: 1.75rem;
+}
+.apartment {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.apartment__title {
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+.apartment__image {
+  width: auto;
+  margin-top: 30px;
+  max-height: 450px;
+}
+.bottom__left {
+  width: 45%;
+  float: left;
+}
+.bottom__right {
+  width: 45%;
+  float: right;
+}
+.bottom__table {
+  margin-bottom: 15px;
+}
+.bottom__table__name {
+  padding-right: 30px;
+}
+.bottom__table__value {
+  font-weight: bold;
+}
+.bottom__compass {
+  width: 100px;
+  height: 100px;
+}
+.bottom__plan {
+  font-size: 0;
+  line-height: 1;
+  margin-left: auto;
+  text-align: center;
+}
+.bottom__plan__street-name {
+  line-height: 1;
+  font-size: 10px;
+  margin-top: 5px;
+}
+.bottom__plan__image {
+  float: right;
+  display: block;
+}
+.bottom__plan__svg {
+  float: right;
+  display: block;
+}

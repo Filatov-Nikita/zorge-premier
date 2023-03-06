@@ -1,0 +1,109 @@
+.body-desktop
+  overflow hidden
+  font-family 'TT Commons'
+  background-color #1f252f
+
+.mobile-desktop
+  background-color #181f29
+
+.icon-border
+  size 50px
+  display flex
+  cursor pointer
+  align-items center
+  border-radius 50px
+  justify-content center
+  border 3px solid #f6ac6d
+  background-color rgba(0, 0, 0, .15)
+  transition background-color .15s ease-in-out
+  +between(1000px, 1290px)
+    size 45px
+    border-width 2px
+  & + *, .icon-bg + *
+    margin-top 10px
+  svg
+    fill #fff
+    max_size 24px
+    transition fill .15s ease-in-out
+  &:hover
+    background-color #f6ac6d
+    svg
+      fill #1f252f
+
+.icon-bg
+  @extend .icon-border
+  background-color #f6ac6d
+  &--close
+    svg
+      size 17px
+  svg
+    fill #1f252f
+  &:active
+    background-color rgba(0, 0, 0, .15)
+    svg
+      fill #fff
+
+.phone
+  display flex
+  user-select none
+  align-items center
+  &:hover
+    text-decoration none
+    .icon-bg
+      @extend .icon-bg:hover
+  &--black-mode:hover .icon-bg svg
+    fill #1f252f
+  &__number
+    color #fff
+    line-height 1
+    font-weight 700
+    overflow hidden
+    margin-right 30px
+    white-space nowrap
+    font-size rem(20px)
+    letter-spacing rem(4.4px)
+    font-family 'Heading Pro Wide'
+    transition opacity .15s ease-in-out, visibility .15s ease-in-out
+    &--black-mode
+      color #1f252f
+
+// плавное появление и исчезновение прелоудера
+.vld-overlay
+  animation fadeIn .15s ease-out
+  @keyframes fadeIn
+    0%
+      opacity 0
+      display none
+    1%
+      opacity 0
+      display block
+    100%
+      opacity 1
+.vld-overlay--hide
+  opacity 0
+  transition opacity .15s ease-in-out
+
+.fade-025-enter-active, .fade-025-leave-active
+  transition opacity .25s
+.fade-05-enter-active, .fade-05-leave-active
+  transition opacity .25s
+.fade-1s-enter-active, .fade-1s-leave-active
+  transition opacity 1s
+.fade-05-enter, .fade-05-leave-to, .fade-025-enter, .fade-025-leave-to, .fade-1s-enter, .fade-1s-leave-to
+  opacity 0
+
+.first-boot
+  size 100%
+  z-index 9999
+  fixed top 0 left 0
+  background-color #000
+
+.scrollbar-thumb
+  border-radius 0!important
+  background #f6ac6d!important
+
+.fancybox-thumbs
+  background #1f252f
+
+.fancybox-thumbs__list a:before
+  border 3px solid #f6ac6d

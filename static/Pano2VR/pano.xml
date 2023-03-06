@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panorama hideabout="1" id="node1" appversion="6.1.9" apprev="17985">
+  <input leveltilesize="510" levelbias="0.400" levelbiashidpi="1.000" leveltileurl="tiles/node1/cf_%c/l_%l/c_%x/tile_%y.jpg" levelingroll="0" levelingpitch="0" overlap="1" width="500" height="500">
+    <level preload="1" width="500" height="500" predecode="1"/>
+    <preview strip="1" color="0x808080"/>
+  </input>
+  <view fovmode="0" pannorth="0">
+    <start projection="4" tilt="0" pan="0" fov="70"/>
+    <flyin projection="9" tilt="-90" pan="0" fov="170"/>
+    <min fovpixel="2" tilt="-90" pan="0"/>
+    <max fovstereographic="270" fovfisheye="360" tilt="90" scaletofit="1" pan="360" fov="120"/>
+  </view>
+  <userdata title="" latitude="" description="" copyright="" info="" nodeid="node1" longitude="" customnodeid="" heading="0" source="" tags="images" author="" datetime="29.09.2020 10:24" comment=""/>
+  <hotspots wordwrap="1" width="180" height="20">
+    <label border="1" background="1" backgroundcolor="0xffffff" textalpha="1" bordercolor="0x000000" borderradius="1" enabled="0" wordwrap="1" textcolor="0x000000" borderalpha="1" width="180" backgroundalpha="1" height="20"/>
+    <polystyle handcursor="1" mode="2" backgroundcolor="0xf6ab6d" bordercolor="0x0000ff" borderalpha="0" backgroundalpha="0.294118"/>
+    <polyhotspot title="" description="" url="" id="house1_storey13" target="_blank">
+      <polystring>-310.9/15.42|-343.61/20.76|-343.74/17.48|-310.94/12.66</polystring>
+    </polyhotspot>
+    <polyhotspot title="" description="" url="" id="house1_storey12" target="_blank">
+      <polystring>-310.97/12.39|-343.62/17.11|-343.63/13.98|-310.79/9.82</polystring>
+    </polyhotspot>
+  </hotspots>
+  <media/>
+  <transition blendcolor="0x000000" softedge="0" blendtime="1" type="crossdissolve" zoomout="0" zoomfov="20" zoomin="0" enabled="0" zoomspeed="2" zoomoutpause="1"/>
+  <animation syncanimationwithvideo="0" useinautorotation="0" animsequence="Animation01"/>
+  <control lockedkeyboard="0" hideabout="1" contextfullscreen="0" dblclickfullscreen="0" contextprojections="0" lockedwheel="1" lockedkeyboardzoom="0" invertcontrol="1" sensitivity="8" rubberband="0" lockedmouse="0" speedwheel="1" simulatemass="1" invertwheel="0"/>
+</panorama>

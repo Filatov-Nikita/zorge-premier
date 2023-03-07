@@ -5,7 +5,7 @@
     .content(ref="content")
       .title Офис продаж:
       div(v-if="address" v-html="address") {{ address }}
-      div.comagic_phone(v-if="phone")
+      div.comagic_phone(v-if="phone" @click="$VKGoal('contact')")
         a(:href="`tel:${phone}`") {{ phone }}
       div(v-if="email")
         a(:href="`mailto:${email}`") {{ email }}

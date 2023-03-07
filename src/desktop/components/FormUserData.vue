@@ -92,6 +92,8 @@ export default {
           message: this.theme,
         });
 
+        this.$VKGoal('lead');
+
         this.loaderHide();
         setTimeout(() => {
           this.form.name = '';

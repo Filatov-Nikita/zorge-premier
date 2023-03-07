@@ -16,7 +16,7 @@
   .content
     .second-title Офис продаж:
     .address(v-if="address" v-html="address") {{ address }}
-    .content-phone.comagic_phone(v-if="phone")
+    .content-phone.comagic_phone(v-if="phone" @click="$VKGoal('contact')")
       a(:href="`tel:${phone}`") {{ phone }}
     .email(v-if="email")
       a(:href="`mailto:${email}`") {{ email }}

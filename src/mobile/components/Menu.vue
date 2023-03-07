@@ -2,7 +2,7 @@
   .shadow(:style="styleShadow")
   .menu(ref="menu")
     .icon-bg.icon-bg--close(@click="menu.close()"): svg: use(xlink:href="/static/sprite.svg#close")
-    a.phone.comagic_phone(:href="`tel://${phone.href}`")
+    a.phone.comagic_phone(:href="`tel://${phone.href}`" @click="$VKGoal('contact')")
       .phone__number {{ phone.text }}
       .icon-bg: svg: use(xlink:href="/static/sprite.svg#phone")
     .first-menu: router-link(v-for="item in links" :key="item.to" :to="item.to" exact) {{ item.title }}

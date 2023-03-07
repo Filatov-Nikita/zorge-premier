@@ -19,6 +19,7 @@
       @mouseover="$store.commit('variables/phoneShow', true)"
       @mouseleave="$store.commit('variables/phoneShow', false)"
       :class="{'phone--black-mode': phoneBlackMode}"
+      @click="$VKGoal('contact')"
     )
       transition(name="fade-025"): .phone__number(
         v-if="phoneShow && phoneTextVisible"
@@ -35,6 +36,7 @@
         :href="`tel://${phone.href}`"
         @mouseover="$store.commit('variables/phoneShow', true)"
         @mouseleave="$store.commit('variables/phoneShow', false)"
+        @click="$VKGoal('contact')"
       )
         .phone__number {{ phone.text }}
         .icon-bg: svg: use(xlink:href="/static/sprite.svg#phone")

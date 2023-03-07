@@ -13,7 +13,7 @@ import store from './store'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.min.css'
 import App from './desktop/App'
-import AppMobile from './Mobile/App'
+import AppMobile from './mobile/App'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import YmapPlugin from 'vue-yandex-maps';
 import AsyncComputed from 'vue-async-computed'
@@ -30,6 +30,12 @@ axios.defaults.baseURL = 'https://zorge.yes-idea.ru/'
 
 Vue.config.productionTip = false
 window.isMobile = (new MobileDetect(window.navigator.userAgent)).mobile()
+
+Vue.prototype.$VKGoal = function (...args) {
+  if(!VK) return;
+  VK.Goal(...args);
+  console.log('goal', ...args);
+}
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(AsyncComputed)

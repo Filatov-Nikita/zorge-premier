@@ -312,6 +312,8 @@ export default {
           message: theme,
         });
 
+        this.$VKGoal('lead');
+
         this.loaderHide();
         setTimeout(() => {
           alert('Ваша заявка успешно отправлена')

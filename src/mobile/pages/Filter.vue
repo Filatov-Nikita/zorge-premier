@@ -57,19 +57,7 @@ import {mapGetters} from 'vuex'
 import VueSlider from 'vue-slider-component'
 import Flat from '../components/Flat.vue';
 import { list } from '@/api/flats';
-
-function filterInit() {
-  return {
-      rooms_min: null,
-      rooms_max: null,
-      house_id:  null,
-      storey_min: null,
-      storey_max: null,
-      total_area_min: null,
-      total_area_max: null,
-      status: 'free'
-    }
-}
+import { show as showStorey } from '@/api/storeys';
 
 function filterTemplateValuesInit() {
   return {
@@ -81,17 +69,27 @@ function filterTemplateValuesInit() {
 export default {
   components: {VueSlider, BackTo, Flat},
   async created() {
-    if(this.$route.query.houseId) {
-      return this.filter.house_id = this.$route.query.houseId;
+    if(this.$route.query.storeyId) {
+      try {
+        const { data: { data: { number } } } = await showStorey(this.$route.query.storeyId);
+        this.filter.storey_min = number;
+        this.filter.storey_max = number;
+        this.setFilterStorey([number, number]);
+      } catch(e) {
+        console.log(e);
+      }
+    } else {
+      await this.getFlats();
     }
-    await this.getFlats();
   },
-  data: () => ({
-    flatShowed: null,
-    flats: null,
-    filter: filterInit(),
-    values: filterTemplateValuesInit()
-  }),
+  data() {
+    return {
+      flatShowed: null,
+      flats: null,
+      filter: this.filterInit(),
+      values: filterTemplateValuesInit()
+    }
+  },
   beforeDestroy() {
     this.$store.commit('variables/footerShow', true);
     this.$store.commit('variables/phoneBlackMode', false);
@@ -121,8 +119,20 @@ export default {
     }
   },
   methods: {
+    filterInit() {
+      return {
+        rooms_min: null,
+        rooms_max: null,
+        house_id:  this.$route.query.houseId || null,
+        storey_min: null,
+        storey_max: null,
+        total_area_min: null,
+        total_area_max: null,
+        status: 'free'
+      }
+    },
     resetFilter() {
-      this.filter = filterInit();
+      this.filter = this.filterInit();
       this.values = filterTemplateValuesInit();
     },
     setFilterSquare(value) {

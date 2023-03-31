@@ -27,7 +27,7 @@
                     class="place"
                     :class="{ 'place-active':  selected === flat.id}"
                     :d="flat.polygon"
-                    fill="#F6AC6D"
+                    :fill="flat.status === 'sold' ? 'red' : '#F6AC6D'"
                     @click="select(flat)"
                   )
         .storey__left__row__col-2
@@ -143,6 +143,11 @@ export default {
       }
     },
     select(flat) {
+      if(flat.status === 'sold') {
+        this.selected = null;
+        return this.$notify({ type: 'error', text: 'Место уже продано' });
+      }
+
       if(this.selected === flat.id) return this.selected = null;
       this.selected = flat.id;
     }

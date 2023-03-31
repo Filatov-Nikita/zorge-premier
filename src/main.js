@@ -21,6 +21,7 @@ import axios from 'axios'
 import jQuery from 'jquery'
 import './components/formajax'
 import SmoothScrollbar from 'vue-smooth-scrollbar'
+import Notifications from 'vue-notification'
 window.jQuery = jQuery
 window.$ = jQuery
 
@@ -39,6 +40,7 @@ Vue.prototype.$VKGoal = function (...args) {
 
 Vue.use(VueAwesomeSwiper)
 Vue.use(AsyncComputed)
+Vue.use(Notifications)
 
 Vue.use(SmoothScrollbar, {
   alwaysShowTracks: true

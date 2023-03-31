@@ -28,6 +28,7 @@
       .icon-bg
         svg: use(xlink:href="/static/sprite.svg#phone")
   Footer(v-if="footerShow")
+  notifications
   ModalCallback(ref="modal" theme="Заказать обратный звонок")
   transition(name="fade-025"): .hidden-menu(v-if="menuShow")
     .top-right-panel
@@ -115,7 +116,11 @@ export default {
   methods: mapActions({toggleMenu: 'variables/toggleMenu'})
 }
 </script>
-
+<style>
+.vue-notification {
+  font-size: 16px !important;
+}
+</style>
 <style scoped lang="stylus">
 @import 'assets/styles.styl'
 </style>

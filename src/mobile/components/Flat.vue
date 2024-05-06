@@ -1,4 +1,5 @@
-<template lang="pug"> .flat
+<template lang="pug">
+.flat
   template(v-if="flat && storey")
     .flat-number(ref="number") Квартира №{{flat.number}}
     //- swiper(:options="swiperOptions"
@@ -48,40 +49,43 @@
           .flat-pdf__text Скачать планировку
     .flat-circle-links
       router-link.flat-circle-link.flat-circle-link--1(to="/gallery/interiors") Интерьер
-      back-to(to="/parking" icon="parking" style="margin-bottom: 20px") Выбрать паркинг
-      div(style="padding-left: 51px;" v-if="flat.status === 'free'")
-        back-to(icon="arrow-horizontal-small" removeBack @click="$refs.modal.open()") Забронировать
-      div(style="padding-left: 51px;" v-if="flat.status !== 'free'" )
-        back-to(to="/filter" icon="filter" removeBack) Подбор по параметрам
-      Modal(ref="modal" className="custom-form" :options="{touch: false, baseClass: 'custom-modal'}")
-        form(@submit.prevent="submit")
-          .custom-form__title Забронировать квартиру №{{ flat.number }}
-          .row
-            .col-md-6.form-group
-              label.custom-form__label(for="name") Ваше имя
-              .position-relative: input.form-control.custom-form__control(
-                type="text"
-                name="name"
-                id="name"
-                v-model="form.name"
-                required
-              )
-            .col-md-6.form-group
-              label.custom-form__label(for="cellphone") Номер телефона
-              .position-relative: input.form-control.custom-form__control(
-                type="tel"
-                placeholder="+7"
-                v-model="form.phone"
-                v-mask="'+7 (9##) ###-##-##'"
-                minlength="18"
-                id="cellphone"
-              )
-          .row
-            .col-md-6.d-flex.align-items-center
-              .custom-form__agree Я согласен с&nbsp;
-                a(href="javascript:void(0)" @click="openAgree") условиями обработки моих персональных данных
-            .col-md-6
-              button.btn.custom-form__btn(type="submit") Отправить
+      a(v-if="flat && flat.comments" href='#' @click="$refs.walk3d.open()").flat-circle-link.flat-circle-link--2 3D-прогулка
+    back-to(to="/parking" icon="parking" style="margin-bottom: 20px") Выбрать паркинг
+    div(style="padding-left: 51px;" v-if="flat.status === 'free'")
+      back-to(icon="arrow-horizontal-small" removeBack @click="$refs.modal.open()") Забронировать
+    div(style="padding-left: 51px;" v-if="flat.status !== 'free'" )
+      back-to(to="/filter" icon="filter" removeBack) Подбор по параметрам
+    Modal(v-if="flat && flat.comments" ref="walk3d" className="custom-form" :options="{touch: false, baseClass: 'custom-modal'}")
+      iframe(:src='flat.comments' frameborder='0' width='100%' height='100%')
+    Modal(ref="modal" className="custom-form" :options="{touch: false, baseClass: 'custom-modal'}")
+      form(@submit.prevent="submit")
+        .custom-form__title Забронировать квартиру №{{ flat.number }}
+        .row
+          .col-md-6.form-group
+            label.custom-form__label(for="name") Ваше имя
+            .position-relative: input.form-control.custom-form__control(
+              type="text"
+              name="name"
+              id="name"
+              v-model="form.name"
+              required
+            )
+          .col-md-6.form-group
+            label.custom-form__label(for="cellphone") Номер телефона
+            .position-relative: input.form-control.custom-form__control(
+              type="tel"
+              placeholder="+7"
+              v-model="form.phone"
+              v-mask="'+7 (9##) ###-##-##'"
+              minlength="18"
+              id="cellphone"
+            )
+        .row
+          .col-md-6.d-flex.align-items-center
+            .custom-form__agree Я согласен с&nbsp;
+              a(href="javascript:void(0)" @click="openAgree") условиями обработки моих персональных данных
+          .col-md-6
+            button.btn.custom-form__btn(type="submit") Отправить
 </template>
 
 <script>
@@ -513,6 +517,12 @@ export default {
   border 1px solid #f6ac6d
   &-active
     background-color #f6ac6d
+.flat-circle-links
+  display flex
+  flex-wrap wrap
+  gap 16px
+  justify-content center
+  margin-bottom 50px
 .flat-circle-link
   display block
   color #f6ac6d
@@ -521,7 +531,6 @@ export default {
   font-size 10px
   min-width 154px
   font-weight 700
-  margin 35px auto
   width fit-content
   text-align center
   padding-top 170px
@@ -533,7 +542,7 @@ export default {
   &--1
     background-image url('../assets/images/flat-circle-link-1.png')
   &--2
-    background-image url('../assets/images/flat-circle-link-2.png')
+    background-image url('../assets/images/flat-circle-link-3.png')
 .custom-form
   size 100%
   padding 20px

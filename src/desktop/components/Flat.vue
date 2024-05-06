@@ -1,4 +1,5 @@
-<template lang="pug"> .flat
+<template lang="pug">
+.flat
   ModalRightToLeft(
     ref="rightModal"
     @afterClose="hideFlat"
@@ -35,7 +36,9 @@
         a.flat-circle(href="#" @click="$refs.modalInt.open()")
           img(alt src="../assets/images/flat-circle-interior.png")
           .flat-circle__title Интерьеры
-
+        a.flat-circle(href="#" v-if='flat && flat.comments' @click="$refs.walk3d.open()")
+          img(alt src="../assets/images/flat-circle-walk3d.png")
+          .flat-circle__title 3D-прогулка
     .flat__footer
       .flat-button-booked(@click="$refs.modal.open()" :style="{visibility:[flat.status === 'free' ? 'visible' : 'hidden']}")
         svg: use(xlink:href="/static/sprite.svg#arrow-horizontal-long")
@@ -60,6 +63,8 @@
         .slider-button.slider-button--prev(slot="button-prev"): img(alt src="@/assets/svg/button-prev.svg")
         .slider-button.slider-button--next(slot="button-next"): img(alt src="@/assets/svg/button-prev.svg")
         .slider-pagination(slot="pagination")
+  ModalRightToLeft(v-if="flat && flat.comments" title='3D-прогулка' ref="walk3d")
+    iframe(:src='flat.comments'  width="100%" height="100%" frameborder='0')
   ModalRightToLeft(
     v-if="flat && flat.video_clip"
     ref="planer"
@@ -327,10 +332,14 @@ export default {
 <style scoped lang="stylus">
 .flat-right
   padding-top 100px
+  > a + a
+    margin-top: 24px
+
 .flat-circle
+  display: block
   cursor pointer
   text-align center
-  margin-bottom 50px
+
   &__title
     color #f6ac6d
     margin-top 10px

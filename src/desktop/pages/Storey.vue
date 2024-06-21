@@ -78,7 +78,7 @@
               :class="[flat.status]"
               @click="showFlat(flat)"
               ) {{ flat }}
-  Flat(v-if="flatShow" :flatId="flatShow" @close="flatShow = null")
+  Flat(v-if="flatId" :flatId="flatId" @close="flatId = null")
   //- checkRoomsClass(flat.rooms_number) ? 'hidden' : ''
 </template>
 
@@ -100,7 +100,6 @@ export default {
     checkedRooms: [],
     storeyNumber: null,
     hoverPath: null,
-    flatShow: null,
     content: null,
     currentStorey: null,
     popupCoords: {
@@ -115,6 +114,18 @@ export default {
     },
     houseId () {
       return Number(this.$route.query.houseId)
+    },
+    flatId: {
+      get() {
+        if(!this.$route.query.flatId) return;
+        return Number(this.$route.query.flatId);
+      },
+      set(value) {
+        if(!value) value = undefined;
+        this.$router.push({
+          query: { ...this.$route.query, flatId: value },
+        });
+      }
     },
     viewBox() {
       if(this.houseId === 3 && this.id === 26) return '0 0 1599 2138';
@@ -204,8 +215,8 @@ export default {
         this.checkedRooms.push(number)
       }
     },
-    showFlat (id) {
-      this.flatShow = id
+    showFlat (_flatId) {
+      this.flatId = _flatId;
     },
     pathHover (e, i, flat, type) {
       if(type === 'over') {

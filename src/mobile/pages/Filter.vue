@@ -1,4 +1,5 @@
-<template lang="pug"> .filter
+<template lang="pug">
+.filter
   .box-wrapper
     .title Комнат
     .cirlce-boxes__items
@@ -48,7 +49,7 @@
         .col(:style="{'flex-basis':100/cols.length + '%'}") {{ item.storey_number }}
         .col(:style="{'flex-basis':100/cols.length + '%'}") {{ item.total_area }}
     back-to(to="/select" icon="filter") Подбор на фасаде
-  Flat(v-if="flatShowed" :flatId="flatShowed.id")
+  Flat(v-if="showedFlatId" :flatId="showedFlatId" :key="showedFlatId")
 </template>
 
 <script>
@@ -84,7 +85,6 @@ export default {
   },
   data() {
     return {
-      flatShowed: null,
       flats: null,
       filter: this.filterInit(),
       values: filterTemplateValuesInit()
@@ -109,6 +109,16 @@ export default {
     isBack() {
       return this.$route.params.isBack;
     },
+    showedFlatId: {
+      get() {
+        if(!this.$route.query.flatId) return null;
+        return Number(this.$route.query.flatId);
+      },
+      set(value) {
+        if(!value) value = undefined;
+        this.$router.push({ query: { ...this.$route.query, flatId: value } });
+      }
+    }
   },
   watch: {
     filter: {
@@ -160,10 +170,10 @@ export default {
       this.loaderHide();
     },
     onUpdateFlat(flat) {
-      this.flatShowed = null;
-      setTimeout(() => {
-        this.flatShowed = flat;
-      }, 0);
+      // this.showedFlatId = null;
+      this.showedFlatId = flat.id;
+      // setTimeout(() => {
+      // }, 0);
     },
   },
 }
